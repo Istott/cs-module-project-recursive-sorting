@@ -29,4 +29,62 @@ def binary_search(arr, target, low, high):
 # or iteratively
 def agnostic_binary_search(arr, target):
     # Your code here
-    return
+    start = 0
+    end = len(arr) -1
+
+    isAscending = arr[start] < arr[end]
+
+    while start <= end:
+
+      mid = (start + end) // 2
+
+      if target == arr[mid]:
+        return mid
+
+      if isAscending:
+        if target < arr[mid]:
+          end = mid - 1
+        else:
+          start = mid + 1
+
+      else:      
+        if target > arr[mid]:
+          end = mid - 1
+        else:
+          start = mid + 1
+
+    return -1
+
+
+    # start = arr[0]
+    # end = arr[1]
+
+    # low = 0
+    # high = len(arr) - 1
+
+    # if arr[start] < arr[end]:
+    #     if low > high:
+    #         return -1  # not found
+    #     else:
+    #         mid = (high + low) // 2
+
+    #         if target == arr[mid]:
+    #             return mid
+    #         elif target < arr[mid]:
+    #             # high = mid - 1
+    #             return binary_search(arr, target, low, mid - 1)
+    #         else:
+    #             return binary_search(arr, target, mid + 1, high)
+    # else:
+    #     if low > high:
+    #         return -1  # not found
+    #     else:
+    #         mid = (high + low) // 2
+
+    #         if target == arr[mid]:
+    #             return mid
+    #         elif target > arr[mid]:
+    #             # high = mid - 1
+    #             return binary_search(arr, target, mid + 1, high)
+    #         else:
+    #             return binary_search(arr, target, low, mid - 1)
